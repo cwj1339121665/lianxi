@@ -1,0 +1,66 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #box {
+            width: 800px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: orangered;
+            margin: 50px auto;
+            font-size: 20px;
+            font-weight: 500;
+            background: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+       let box=document.querySelector('#box');
+   function createTime(value){
+      function addZero(value){
+        return value=value<10?'0'+value:value;
+      }
+      function transDay(value){
+        let obj={
+          0:'星期日',
+          1:'星期一',
+          2:'星期二',
+          3:'星期三',
+          4:'星期四',
+          5:'星期五',
+          6:'星期六'
+        }
+        return obj[value];
+      }
+     let time=new Date();
+     let year=time.getFullYear();
+     let month=time.getMonth()+1
+     let date=time.getDate()  
+     let day=time.getDay()
+     let huors=time.getHours()
+     let minutes=time.getMinutes()
+     let seconds=time.getSeconds()
+     let milliseconds=time.getMilliseconds()
+     box.innerText=`${addZero(year)}年${addZero(month)}月${addZero(date)}日 ${addZero(huors)}点${addZero(minutes)}分${addZero(seconds)}秒 ${transDay(day)}`
+     
+   } 
+   createTime()
+   setInterval(createTime,1000)
+ 
+</script>  
+</body>
+</html>
